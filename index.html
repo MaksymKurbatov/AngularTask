@@ -1,0 +1,99 @@
+<!doctype html>
+<html ng-app = "app"">
+	<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/foundation.min.css">
+	<link rel="stylesheet" href="css/trello.css">
+	</head>
+	<body ng-cloak>
+<body>
+	<header>
+		<div class = 'header'>
+		<h1 class = 'app-name-left'>Angular Task</h1>
+		</div>
+	</header>
+	
+	<section ng-controller="tablesCtrl as tablesCtrl">
+			<div ng-if='!tablesCtrl.isAddNew'>
+			<section 
+					ng-controller= "rowCtrl as rowCtrl">
+			<input type="button" name="addUSersBtn" ng-click="tablesCtrl.addUser()"value="Add new user" >
+				<table id="sTable" class="tablesorter" >
+					<thead>
+						<tr id="head">
+							<th>Name</td>
+							<th>Family</td>
+							<th>Age</td>
+							<th>Email</td>
+							<th>Registration Date</td>
+							<th>Operations</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr  ng-repeat = "row in tablesCtrl.lists">
+							<td>{{row.Name}} </td>
+							<td> {{row.Family}}</td>
+							<td>{{row.Age}}</td>
+							<td>{{row.Email}}</td>
+							<td>2016/02/03</td>
+							<td>
+								<img src="img/pen_alt_fill.svg" ng-click='tablesCtrl.updateUser(row)'> <img src="img/x_sm.svg" ng-click='tablesCtrl.deleteRow(row)'>
+							</td>
+							
+						</tr>
+					<tfoot>
+						<tr>
+							<td colspan="4">
+							<ul class="paginator"></ul>
+								
+							</td>
+						</tr>
+						</tfoot>
+					</tbody>
+				</table>
+				</section>
+			</div>
+			
+			 
+			<div id="addser" ng-if='tablesCtrl.isAddNew' >
+			 <section ng-controller ="rowCtrl as rowCtrl" >
+					<input type="button" name="submitBtn"  ng-click="tablesCtrl.submitNewUser()" ng-if='!tablesCtrl.isEditingRow' value="Submitnew user">
+					<input type="button" name="editBtn"   ng-if='tablesCtrl.isEditingRow'  ng-click="tablesCtrl.editRow()" value="Edit user data">
+					
+					<table >
+						<tr>
+							<td><b>Family name:<b></td>
+							<td><input SIZE=20 VALUE="" ng-model="tablesCtrl.userDate.Family" >
+						</tr>
+						<tr><td><b>Name:<b></td>
+							<td><input  SIZE=20 VALUE="" ng-model="tablesCtrl.userDate.Name">
+						<tr><td><b>Age:<b></td>
+							<td><input  SIZE="20" VALUE="18" ng-model="tablesCtrl.userDate.Age">
+						<tr><td><b>Email:<b></td>
+							<td><input SIZE=10 VALUE="" ng-model="tablesCtrl.userDate.Email"></td></tr>
+					</table>
+				</section>
+			</div>
+			
+			
+    </section>
+		
+	</section>
+</body>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
+	<script src ="js/main.js"> </script>
+	
+	<script src ="js/controllers/TablesCtrl.js"> </script>
+	<script src ="js/controllers/RowCtrl.js"> </script>
+	
+	
+	<script src ="js/factories/tableFactory.js"> </script>
+	<script src ="js/factories/rowFactory.js"> </script>
+	
+	<script src ="js/directives/closeEditing.js"> </script>
+	
+	
+</html>
