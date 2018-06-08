@@ -1,2 +1,2 @@
-var myApp=angular.module('app', ['idialog']);
+var myApp=angular.module('app', []);
  
