@@ -1,11 +1,11 @@
-angular.module('app').controller("tablesCtrl", function(tableFactory , rowFactory){
-  this.lists = tableFactory.getLists();
-  this.isAddNew = false;
-  this.isEditingRow = false;
+angular.module('app').controller("tablesCtrl", function($scope,tableFactory){
+  $scope.lists = tableFactory.getLists();
+  $scope.isAddNew = false;
+  $scope.isEditingRow = false;
   
   var updatingRow;
   
-	this.userDate ={
+	$scope.userDate ={
 		Name: '',
 		Family: '',
 		Age: '',
@@ -13,19 +13,23 @@ angular.module('app').controller("tablesCtrl", function(tableFactory , rowFactor
 		Date: ''
 		};
 		
-	this.addUser = function(){
-		this.isAddNew = true;
+	$scope.addUser = function(){
+	
+		$scope.isAddNew = true;
 	}
 	
-	this.deleteRow = function (row){
+	
+	
+	
+	$scope.deleteRow = function (row){
 	 tableFactory.deleteRow(row);
 	}
 	
 	
-	this.submitNewUser = function(){
+	$scope.submitNewUser = function(){
 	tableFactory.addNewRow(this.userDate);
-		this.isAddNew = false;
-		this.userDate ={
+		$scope.isAddNew = false;
+		$scope.userDate ={
 			Name: '',
 			Family: '',
 			Age: '',
@@ -34,11 +38,11 @@ angular.module('app').controller("tablesCtrl", function(tableFactory , rowFactor
 			};
 	}
 	
-	this.updateUser = function (row) {
+	$scope.updateUser = function (row) {
 		console.log("editRow");
-		this.isEditingRow = true;
-		this.isAddNew = true;
-		this.userDate ={
+		$scope.isEditingRow = true;
+		$scope.isAddNew = true;
+		$scope.userDate ={
 		Name: row.Name,
 		Family: row.Family,
 		Age: row.Age,
@@ -49,11 +53,11 @@ angular.module('app').controller("tablesCtrl", function(tableFactory , rowFactor
 		
 	}
 	
-	this.editRow = function () {
+	$scope.editRow = function () {
 		tableFactory.editRow(updatingRow,this.userDate);
-		this.isEditingRow = false;
-		this.isAddNew = false;
-		this.userDate ={
+		$scope.isEditingRow = false;
+		$scope.isAddNew = false;
+		$scope.userDate ={
 			Name: '',
 			Family: '',
 			Age: '',
