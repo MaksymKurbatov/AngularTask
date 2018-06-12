@@ -2,6 +2,8 @@ angular.module('app').controller("tablesCtrl", function($scope,tableFactory){
   $scope.lists = tableFactory.getLists();
   $scope.isAddNew = false;
   $scope.isEditingRow = false;
+    $scope.orderByField = 'Name';
+	$scope.reverseSort = false;
   
   var updatingRow;
   
@@ -17,9 +19,6 @@ angular.module('app').controller("tablesCtrl", function($scope,tableFactory){
 	
 		$scope.isAddNew = true;
 	}
-	
-	
-	
 	
 	$scope.deleteRow = function (row){
 	 tableFactory.deleteRow(row);
@@ -53,7 +52,7 @@ angular.module('app').controller("tablesCtrl", function($scope,tableFactory){
 		
 	}
 	
-	$scope.editRow = function () {
+	 $scope.editRow = function () {
 		tableFactory.editRow(updatingRow,this.userDate);
 		$scope.isEditingRow = false;
 		$scope.isAddNew = false;

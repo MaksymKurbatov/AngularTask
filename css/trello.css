@@ -176,3 +176,16 @@ input.search{
     background-color: #c5c5c5;
    
 }
+.asc-span, .desc-span {
+    width  : 16px;   
+    height : 16px; 
+    display: inline-block;       
+    margin-left: 10px;
+    background-repeat: no-repeat;
+}
+.asc-span{
+    background: url("/images/asc_sort.jpg");
+}
+.desc-span{
+    background: url("/images/desc_sort.jpg");
+}           

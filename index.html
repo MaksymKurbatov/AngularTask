@@ -22,16 +22,43 @@
 					<table id="sTable" class="tablesorter" >
 						<thead>
 							<tr id="head">
-								<th>Name</td>
-								<th>Family</td>
-								<th>Age</td>s
-								<th>Email</td>
-								<th>Registration Date</td>
-								<th>Operations</td>
+								<th>
+									<a href="#" ng-click="orderByField='Name'; reverseSort = !reverseSort">
+									Name 
+									<span ng-show="orderByField == 'Name'"><span ng-show="!reverseSort"></span><span ng-show="reverseSort"></span></span>
+									</a>
+								</th>
+								<th>
+									<a href="#" ng-click="orderByField='Family'; reverseSort = !reverseSort">
+									Family 
+									<span ng-show="orderByField == 'Family'"><span ng-show="!reverseSort"></span><span ng-show="reverseSort"></span></span>
+									</a>
+								</th>
+								<th>
+									<a href="#" ng-click="orderByField='Age'; reverseSort = !reverseSort">
+									Age 
+									<span ng-show="orderByField == 'Age'"><span ng-show="!reverseSort"></span><span ng-show="reverseSort"></span></span>
+									</a>
+								</th>
+								<th>
+									<a href="#" ng-click="orderByField='Email'; reverseSort = !reverseSort">
+									Email 
+									<span ng-show="orderByField == 'Email'"><span ng-show="!reverseSort"></span><span ng-show="reverseSort"></span></span>
+									</a>
+								</th>
+								<th>
+									<a href="#" ng-click="orderByField='Registration Date'; reverseSort = !reverseSort">
+									Registration Date 
+									<span ng-show="orderByField == 'Registration Date'"><span ng-show="!reverseSort"></span><span ng-show="reverseSort"></span></span>
+									</a>
+								</th>
+								<th>
+								Operations
+								</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr  ng-repeat = "row in lists">
+							<tr  ng-repeat = "row in lists |orderBy:orderByField:reverseSort">
 								<td>{{row.Name}} </td>
 								<td> {{row.Family}}</td>
 								<td>{{row.Age}}</td>
@@ -76,16 +103,12 @@
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
 	<script src ="js/main.js"> </script>
-	<script src= "js/idialog.js"></script>
+	
 	
 	<script src ="js/controllers/TablesCtrl.js"> </script>
-	
-	
 	<script src ="js/factories/tableFactory.js"> </script>
 	
-	<script src ="js/directives/popUpDialog.js"> </script>
 	
-	<script src="js/idialog.js"></script>
 	
 	
 </html>
